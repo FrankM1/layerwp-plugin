@@ -6,7 +6,7 @@ Description: A WordPress site builder so simple and intuitive, you’ll be a pro
 Author: Franklin Gitonga
 Plugin URI: http://radiumthemes.com/
 Plugin URI: http://radiumthemes.com/
-Version: 1.0.0
+Version: 0.0.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -190,6 +190,7 @@ class LayerWP {
         require_once LAYERS_TEMPLATE_DIR . '/core/helpers/sanitization.php';
         require_once LAYERS_TEMPLATE_DIR . '/core/helpers/woocommerce.php';
         require_once LAYERS_TEMPLATE_DIR . '/core/helpers/template.php';
+        require_once LAYERS_TEMPLATE_DIR . '/core/helpers/integrate-template.php';
         
         /*
          * Load Admin-specific files
