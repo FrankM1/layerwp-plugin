@@ -1,8 +1,8 @@
 <?php
 
 /*
-Plugin Name: Layers by Radium
-Description:  A WordPress site builder so simple and intuitive, you’ll be a pro the first time you use it.
+Plugin Name: Layers
+Description: A WordPress site builder so simple and intuitive, you’ll be a pro the first time you use it.
 Author: Franklin Gitonga
 Plugin URI: http://radiumthemes.com/
 Plugin URI: http://radiumthemes.com/
@@ -11,7 +11,13 @@ License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
-/* Based on LayerWP by Obox Themes */
+/* 
+Based on LayerWP by Obox Themes 
+Author: Obox Themes
+Author URI: http://www.oboxthemes.com/
+Theme URI: http://demo.layerswp.com/
+Version: 1.0.4
+*/
 
 /**
  * Init class for Layer WP.
@@ -237,7 +243,7 @@ class LayerWP {
 	
 		if ( is_admin() ) {
 			
-			//new LayerWP_Template;
+			new LayerWP_Template;
 			
 		}
 		

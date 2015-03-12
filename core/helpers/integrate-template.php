@@ -47,7 +47,7 @@ class LayerWP_Template {
 
         // Add your templates to this array.
         $templates = array(
-            LAYERS_BUILDER_TEMPLATE  => 'Builder',
+            LAYERS_BUILDER_TEMPLATE  => 'Page Builder',
         );
 
         $this->templates = apply_filters( 'layerwp_page_templates', $templates );
