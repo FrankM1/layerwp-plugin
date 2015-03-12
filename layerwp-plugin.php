@@ -242,12 +242,8 @@ class LayerWP {
      */
     public function init_classes() {
 	
-		if ( is_admin() ) {
-			
-			new LayerWP_Template;
-			
-		}
-		
+		new LayerWP_Template;
+ 		
     }
 
     /**

@@ -47,7 +47,7 @@ class LayerWP_Template {
 
         // Add your templates to this array.
         $templates = array(
-            LAYERS_BUILDER_TEMPLATE  => 'Page Builder',
+            LAYERS_BUILDER_TEMPLATE => __('Page Builder', 'layerwp'),
         );
 
         $this->templates = apply_filters( 'layerwp_page_templates', $templates );
@@ -92,7 +92,7 @@ class LayerWP_Template {
     public function view_project_template( $template ) {
 				
         $page_template = get_post_meta( get_the_ID(), '_wp_page_template', true );
-
+				
         if( $page_template == LAYERS_BUILDER_TEMPLATE)
         	add_filter('layerwp_is_gallery_archive', '__return_true');
 
