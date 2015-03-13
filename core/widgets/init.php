@@ -136,9 +136,9 @@ class Layers_Widgets {
 						$sidebar_id = $dynamic_widget_id  .'-' . $widget_key . '-' . $sidebar_key;
 
 						$dynamic_sidebars[] =  array(
-								'id' => $sidebar_id,
-								'title' => $sidebar[ 'title' ]
-							);
+							'id' => $sidebar_id,
+							'title' => $sidebar[ 'title' ]
+						);
 
 					} // foreach $widget_area['modules']
 				} // if isset $widget_area['modules']
@@ -160,14 +160,14 @@ class Layers_Widgets {
 
 		foreach( $dynamic_sidebars as $dynamic_sidebar ){
 			register_sidebar( array(
-							'id'		=> $dynamic_sidebar[ 'id' ],
-							'name'		=> $dynamic_sidebar[ 'title' ],
-							'description'	=> __( 'Layers Builder section.' , 'layerswp' ),
-							'before_widget'	=> '<aside id="%1$s" class="widget %2$s">',
-							'after_widget'	=> '</aside>',
-							'before_title'	=> '<h4 class="widget-title">',
-							'after_title'	=> '</h4>',
-						) );
+				'id'		=> $dynamic_sidebar[ 'id' ],
+				'name'		=> $dynamic_sidebar[ 'title' ],
+				'description'	=> __( 'Layers Builder section.' , 'layerswp' ),
+				'before_widget'	=> '<aside id="%1$s" class="widget %2$s">',
+				'after_widget'	=> '</aside>',
+				'before_title'	=> '<h4 class="widget-title">',
+				'after_title'	=> '</h4>',
+			) );
 		}
 
 	}
