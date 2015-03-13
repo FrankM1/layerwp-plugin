@@ -89,7 +89,7 @@ if( !class_exists( 'Layers_Slider_Widget' ) ) {
 			// Slider JS enqueue
 			wp_enqueue_script(
 				LAYERS_THEME_SLUG . '-slider-js' ,
-				LAYERS_TEMPLATE_URI . '/assets/frontend/js/swiper.js',
+				LAYERS_TEMPLATE_URI . 'assets/frontend/js/swiper.js',
 				array( 'jquery' ),
 				LAYERS_VERSION
 			); // Slider
@@ -97,7 +97,7 @@ if( !class_exists( 'Layers_Slider_Widget' ) ) {
 			// Slider CSS enqueue
 			wp_enqueue_style(
 				LAYERS_THEME_SLUG . '-slider',
-				LAYERS_TEMPLATE_URI . '/assets/frontend/css/swiper.css',
+				LAYERS_TEMPLATE_URI . 'assets/frontend/css/swiper.css',
 				array(),
 				LAYERS_VERSION
 			); // Slider

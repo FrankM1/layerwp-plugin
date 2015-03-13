@@ -475,7 +475,7 @@ if( ! function_exists( 'layers_scripts' ) ) {
 
 		wp_enqueue_script(
 			LAYERS_THEME_SLUG . '-plugins-js' ,
-			plugin_dir_url( __FILE__ ) . '/assets/frontend/js/plugins.js',
+			plugin_dir_url( __FILE__ ) . 'assets/frontend/js/plugins.js',
 			array(
 				'jquery',
 			),
@@ -484,7 +484,7 @@ if( ! function_exists( 'layers_scripts' ) ) {
 
 		wp_enqueue_script(
 			LAYERS_THEME_SLUG . '-framework-js' ,
-			plugin_dir_url( __FILE__ ) . '/assets/frontend/js/layers.framework.js',
+			plugin_dir_url( __FILE__ ) . 'assets/frontend/js/layers.framework.js',
 			array(
 				'jquery',
 			),
@@ -503,28 +503,28 @@ if( ! function_exists( 'layers_scripts' ) ) {
 
 		wp_enqueue_style(
 			LAYERS_THEME_SLUG . '-framework' ,
-			plugin_dir_url( __FILE__ ) . '/assets/frontend/css/framework.css',
+			plugin_dir_url( __FILE__ ) . 'assets/frontend/css/framework.css',
 			array() ,
 			LAYERS_VERSION
 		);
 
 		wp_enqueue_style(
 			LAYERS_THEME_SLUG . '-components',
-			plugin_dir_url( __FILE__ ) . '/assets/frontend/css/components.css',
+			plugin_dir_url( __FILE__ ) . 'assets/frontend/css/components.css',
 			array(),
 			LAYERS_VERSION
 		); // Compontents
 
 		wp_enqueue_style(
 			LAYERS_THEME_SLUG . '-responsive',
-			plugin_dir_url( __FILE__ ) . '/assets/frontend/css/responsive.css',
+			plugin_dir_url( __FILE__ ) . 'assets/frontend/css/responsive.css',
 			array(),
 			LAYERS_VERSION
 		); // Responsive
 
 		wp_enqueue_style(
 			LAYERS_THEME_SLUG . '-icon-fonts',
-			plugin_dir_url( __FILE__ ) . '/assets/frontend/css/layers-icons.css',
+			plugin_dir_url( __FILE__ ) . 'assets/frontend/css/layers-icons.css',
 			array(),
 			LAYERS_VERSION
 		); // Icon Font
@@ -539,7 +539,7 @@ if( ! function_exists( 'layers_scripts' ) ) {
 		if( class_exists( 'WooCommerce' ) ) {
 			wp_enqueue_style(
 				LAYERS_THEME_SLUG . '-woocommerce',
-				plugin_dir_url( __FILE__ ) . '/assets/frontend/css/woocommerce.css',
+				plugin_dir_url( __FILE__ ) . 'assets/frontend/css/woocommerce.css',
 				array(),
 				LAYERS_VERSION
 			); // Woocommerce

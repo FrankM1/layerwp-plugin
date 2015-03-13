@@ -237,7 +237,7 @@ if( !class_exists( 'Layers_Widget' ) ) {
 
 			wp_enqueue_script(
 				LAYERS_THEME_SLUG . '-layers-masonry-js' ,
-				LAYERS_TEMPLATE_URI() . '/assets/js/layers.masonry.js',
+				LAYERS_TEMPLATE_URI . 'assets/frontend/js/layers.masonry.js',
 				array(
 					'jquery'
 				),
