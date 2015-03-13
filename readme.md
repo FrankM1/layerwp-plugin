@@ -6,7 +6,7 @@ As a plugin, Layers is not intended for direct modification. Instead, it can be 
 
 ##### Note: This is the plugin version. For the original see
 
-[LayersWP](http://www.layerswp.com/download/layers/)
+[LayersWP](http://www.layerswp.com/)
 
 
 ## Download & Install
