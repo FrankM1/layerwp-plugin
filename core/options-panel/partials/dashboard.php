@@ -118,19 +118,6 @@ $api = new Layers_API(); ?>
 									<?php } ?>
 								</div>
 							</li>
-							<li>
-								<h4 class="layers-heading"><?php _e( 'The Layers Updater' , 'layerswp' ); ?></h4>
-								<p>
-									<?php _e( 'Make sure you\'re always running the latest version of Layers by installing the Layers Updater' , 'layerswp' ); ?>
-								</p>
-								<div class="layers-btn-group">
-									<?php if( class_exists( 'Layers_Updater' ) ) { ?>
-										<span class="layers-success"><?php _e( 'Installed' , 'layerswp' ); ?></span>
-									<?php } else { ?>
-										<?php _e( sprintf( '<a class="layers-button btn-link" href="%s">Get the Layers Updater</a>', 'http://www.layerswp.com/download/layers-updater/' ) , 'layerswp' ); ?>
-									<?php } ?>
-								</div>
-							</li>
 						</ul>
 					</div>
 					<?php $videos = array(

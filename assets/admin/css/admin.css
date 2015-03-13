@@ -1832,7 +1832,7 @@ input[type=radio]:checked + .layers-settings-icon span{
     display: none;
     width: 16px;
     height: 16px;
-    background: #FF5353 url('../../images/cross.png') no-repeat;
+    background: #FF5353 url('../images/cross.png') no-repeat;
     background-size: 16px 16px;
     border: 1px solid #BC3F39;
     position: absolute;

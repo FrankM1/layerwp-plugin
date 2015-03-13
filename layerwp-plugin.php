@@ -6,7 +6,7 @@ Description: A WordPress site builder so simple and intuitive, you’ll be a pro
 Author: Franklin Gitonga
 Plugin URI: http://radiumthemes.com/
 Plugin URI: http://radiumthemes.com/
-Version: 0.0.1
+Version: 0.0.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
