@@ -1,4 +1,5 @@
-<?php  /**
+<?php  
+/**
  * Widget Ajax
  *
  * This file is used to fetch, using Ajax, and display different parts of the layers widgets

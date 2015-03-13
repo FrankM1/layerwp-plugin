@@ -1,4 +1,5 @@
-<?php /**
+<?php 
+/**
  * Layers Options Panel
  *
  * This file outputs the WP Pointer help popups around the site
