@@ -50,7 +50,7 @@ class Layers_Widgets {
 		// Enqueue Styles
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) , 50 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_print_styles' ) , 50 );
-		add_action( 'customize_controls_print_styles' , array( $this, 'admin_print_styles' ) );
+		add_action( 'customize_controls_print_styles', array( $this, 'admin_print_styles' ) );
 
 		// Register Sidebars
 		$this->register_sidebars();
@@ -89,18 +89,17 @@ class Layers_Widgets {
 	 * Port Widgets between Layers Parent theme and Child themes
 	 */
 	public function preserve_widgets( $theme ){
+	
 		global $sidebars_widgets;
 
 		// If we are using a Layers theme, then let's make sure widgets are kept between our theme switch
-		if( LAYERS_THEME_SLUG == basename( LAYERS_TEMPLATE_DIR ) || 'layerswp' == basename( LAYERS_TEMPLATE_DIR ) ){
+		// Fetch the old theme and its theme mods
+		$old_theme = get_option( 'theme_switched' );
+		$old_theme_mods = get_option( 'theme_mods_' . $old_theme );
 
-			// Fetch the old theme and its theme mods
-			$old_theme = get_option( 'theme_switched' );
-			$old_theme_mods = get_option( 'theme_mods_' . $old_theme );
-
-			// Update our 'new' theme with the widgets we have cultivated so nicely for our builder pages
-			set_theme_mod( 'sidebars_widgets' , $old_theme_mods[ 'sidebars_widgets' ] );
-		}
+		// Update our 'new' theme with the widgets we have cultivated so nicely for our builder pages
+		set_theme_mod( 'sidebars_widgets' , $old_theme_mods[ 'sidebars_widgets' ] );
+	
 	}
 
 	/**
@@ -251,6 +250,7 @@ class Layers_Widgets {
 
 		// Color Picker styles
 		wp_enqueue_style( 'wp-color-picker' );
+		
 	}
 }
 
