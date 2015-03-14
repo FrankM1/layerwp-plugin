@@ -183,7 +183,6 @@ class LayerWP {
         /*
          * Load Front-end helpers
          */
-		require_once LAYERS_TEMPLATE_DIR . '/core/helpers/custom-fonts.php';	
         require_once LAYERS_TEMPLATE_DIR . '/core/helpers/extensions.php';
         require_once LAYERS_TEMPLATE_DIR . '/core/helpers/post.php';
         require_once LAYERS_TEMPLATE_DIR . '/core/helpers/post-types.php';
