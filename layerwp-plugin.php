@@ -6,7 +6,7 @@ Description: A WordPress site builder so simple and intuitive, you’ll be a pro
 Author: Franklin Gitonga
 Plugin URI: http://radiumthemes.com/
 Plugin URI: http://radiumthemes.com/
-Version: 0.0.2
+Version: 0.0.3
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -187,7 +187,6 @@ class LayerWP {
         require_once LAYERS_TEMPLATE_DIR . '/core/helpers/post.php';
         require_once LAYERS_TEMPLATE_DIR . '/core/helpers/post-types.php';
         require_once LAYERS_TEMPLATE_DIR . '/core/helpers/sanitization.php';
-        require_once LAYERS_TEMPLATE_DIR . '/core/helpers/woocommerce.php';
         require_once LAYERS_TEMPLATE_DIR . '/core/helpers/template.php';
         require_once LAYERS_TEMPLATE_DIR . '/core/helpers/integrate-template.php';
         
@@ -345,22 +344,10 @@ function layerwp() {
 }
 
 /**
- * Hook LayerWP early onto the 'plugins_loaded' action.
- *
- * This gives all other plugins the chance to load before Layer WP, to get their
- * actions, filters, and overrides setup without LayerWP being in the way.
+ * Hook LayerWP late onto the 'setup_theme' action.
  */
-//if ( defined( 'LAYERWP_LATE_LOAD' ) ) {
-
-    add_action( 'setup_theme', 'layerwp' );
-
-//} else {
-
- //   layerwp();
-
-//}
-// End class
-
+ add_action( 'setup_theme', 'layerwp' );
+ 
 
 if( ! function_exists( 'layers_setup' ) ) {
 	function layers_setup(){
@@ -414,15 +401,6 @@ if( ! function_exists( 'layers_scripts' ) ) {
 			true
 		); // Framework
 
-
-		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-			wp_enqueue_script( 'comment-reply' );
-		} // Comment reply script
-
-		/**
-		* Front end Styles
-		*/
-
 		wp_enqueue_style(
 			LAYERS_THEME_SLUG . '-framework' ,
 			plugin_dir_url( __FILE__ ) . 'assets/frontend/css/framework.css',
@@ -457,15 +435,6 @@ if( ! function_exists( 'layers_scripts' ) ) {
 			array() ,
 			LAYERS_VERSION
 		);
-
-		if( class_exists( 'WooCommerce' ) ) {
-			wp_enqueue_style(
-				LAYERS_THEME_SLUG . '-woocommerce',
-				plugin_dir_url( __FILE__ ) . 'assets/frontend/css/woocommerce.css',
-				array(),
-				LAYERS_VERSION
-			); // Woocommerce
-		}
 
 		if( is_admin_bar_showing() ) {
 			wp_enqueue_style(
@@ -591,7 +560,6 @@ if( ! function_exists( 'layers_admin_scripts' ) ) {
 
 	}
 }
-
 add_action( 'customize_controls_print_footer_scripts' , 'layers_admin_scripts' );
 add_action( 'admin_enqueue_scripts' , 'layers_admin_scripts' );
  

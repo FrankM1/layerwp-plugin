@@ -1,5 +1,5 @@
 <?php  /**
- * Extension helper funtions
+ * Extension helper functions
  *
  * This file is used to add functionality related to extensions, for example adding templates, registering extensions, etc.
  *
@@ -10,7 +10,7 @@
 /**
 * Get template file locations
 *
-* Provides a way for extention developers to add their own template files, for example for WooCommerce, adding single-product.php inside of an extension as opposed to a child theme
+* Provides a way for extension developers to add their own template files, for example for WooCommerce, adding single-product.php inside of an extension as opposed to a child theme
 *
 */
 if ( !function_exists('layers_add_template_locations') ) {
@@ -26,7 +26,7 @@ if ( !function_exists('layers_add_template_locations') ) {
 /**
 * Load Template Files
 *
-* This function filters load_template() and fetchs the relevant Layers template from which ever plugin has specified it
+* This function filters load_template() and fetches the relevant Layers template from which ever plugin has specified it
 *
 * @param    varchar $template template file to search for
 */

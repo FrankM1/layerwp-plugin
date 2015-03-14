@@ -22,7 +22,7 @@ $find_builder_page = layers_get_builder_pages(); ?>
       <div class="layers-section-title layers-no-push-bottom">
 
          <h2 class="layers-heading layers-push-bottom" id="layers-options-header">
-            <?php _e( 'Add a page title' , 'layerswp' ); ?>
+            <?php _e( 'Add a page title', 'layerswp' ); ?>
          </h2>
 
          <p class="layers-form-item layers-span-12">
