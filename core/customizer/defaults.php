@@ -12,42 +12,46 @@ class Layers_Customizer_Defaults {
 	private static $instance;
 
 	/**
-	* @var string
-	*/
+	 * @var string
+	 */
 	public $prefix;
 
 	/**
-	* @var Layers_Customizer_Config
-	*/
+	 * @var Layers_Customizer_Config
+	 */
 	public $config;
 
 
 	/**
-	*  Retrieves static/global instance
-	*/
-
+	 *  Retrieves static/global instance
+	 */
 	public static function get_instance(){
+	
 		if( ! isset( self::$instance ) ) {
 			self::$instance = new Layers_Customizer_Defaults();
 		}
 		return self::$instance;
+	
 	}
 
 	/**
-	*  Constructor
-	*/
-
+	 *  Constructor
+	 */
 	public function __construct() {
+	
 		// Setup prefix to use
 		$this->prefix  = LAYERS_THEME_SLUG . '-';
+	
 	}
 
 	/**
 	 * Initializes the instance by registering the controls of it's config
 	 */
 	public function init() {
+		
 		// Grab the customizer config
 		$this->config = new Layers_Customizer_Config();
+		
 		foreach( $this->config->controls() as $section_key => $controls ) {
 
 			foreach( $controls as $control_key => $control_data ){
@@ -58,13 +62,14 @@ class Layers_Customizer_Defaults {
 				// Register default
 				$this->register_control_defaults( $setting_key, $control_data[ 'type' ], ( isset( $control_data['default'] ) ? $control_data['default'] : NULL ) );
 			}
+			
 		}
-		}
+		
+	}
 
 	/**
-	* Register Control Defaults
-	*/
-
+	 * Register Control Defaults
+	 */
 	public function register_control_defaults( $key = NULL , $type = NULL, $value = NULL ){
 
 		global $layers_customizer_defaults;
@@ -77,14 +82,15 @@ class Layers_Customizer_Defaults {
 					'type' =>$type
 				);
 		}
-
+		
 		return apply_filters( 'layers_customizer_defaults', $layers_customizer_defaults );
 	}
 
 }
+
 /**
-*  Kicking this off with the 'widgets_init' hook
-*/
+ *  Kicking this off with the 'widgets_init' hook
+ */
 if( !function_exists( 'layers_set_customizer_defaults' ) ) {
 	function layers_set_customizer_defaults(){
 		$layers_customizer_defaults = new Layers_Customizer_Defaults();

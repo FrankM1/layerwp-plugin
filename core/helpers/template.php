@@ -12,8 +12,8 @@
 * Print pagination
 *
 * @param    array           $args           Arguments for this function, including 'query', 'range'
-* @param    varchar         $wrapper        Type of html wrapper
-* @param    varchar         $wrapper_class  Class of HTML wrapper
+* @param    string         $wrapper        Type of html wrapper
+* @param    string         $wrapper_class  Class of HTML wrapper
 * @echo     string                          Post Meta HTML
 */
 if( !function_exists( 'layers_pagination' ) ) {
@@ -49,40 +49,6 @@ if( !function_exists( 'layers_pagination' ) ) {
 		</<?php echo $wrapper; ?>>
 	<?php }
 } // layers_pagination
- 
-/**
- * Retrieve the classes for the wrapper element as an array.
- *
- * @param string|array $class One or more classes to add to the class list.
- * @return array Array of classes.
- */
-if( !function_exists( 'layers_get_site_wrapper_class' ) ) {
-	function layers_get_site_wrapper_class( $class = '' ){
-
-		$classes = array();
-
-		// Add the general site header class
-		$classes[] = 'wrapper-site';
-
-		$classes = apply_filters( 'layer_site_wrapper_class', $classes, $class );
-
-		return $classes;
-
-	}
-} // layers_get_site_wrapper_class
-
-/**
- * Display the classes for the wrapper element.
- *
- * @param string|array $class One or more classes to add to the class list.
- */
-
-if( !function_exists( 'layer_site_wrapper_class' ) ) {
-	function layer_site_wrapper_class( $class = '' ) {
-		// Separates classes with a single space, collates classes for body element
-		echo 'class="' . join( ' ', layers_get_site_wrapper_class( $class ) ) . '"';
-	}
-} // layer_site_wrapper_class
  
 /**
  * Retrieve theme modification value for the current theme.
@@ -160,7 +126,7 @@ if( !function_exists( 'layers_can_show_sidebar' ) ) {
  * Check customizer and page template settings before displaying a sidebar
  *
  * @param   int     $sidebar                Sidebar slug to check
- * @param   varchar $container_class       Sidebar container class
+ * @param   string $container_class       Sidebar container class
  * @return  html    $sidebar                Sidebar template
  */
 if( !function_exists( 'layers_maybe_get_sidebar' ) ) {
@@ -185,10 +151,10 @@ if( !function_exists( 'layers_maybe_get_sidebar' ) ) {
 /**
 * Style Generator
 *
-* @param    varchar     $type   Type of style to generate, background, color, text-shadow, border
+* @param    string     $type   Type of style to generate, background, color, text-shadow, border
 * @param    array       $args
 *
-* @return   varchar     $layers_inline_css CSS to append to the inline widget styles that have been generated
+* @return   string     $layers_inline_css CSS to append to the inline widget styles that have been generated
 */
 if( !function_exists( 'layers_inline_styles' ) ) {
 	function layers_inline_styles( $container_id = NULL, $type = 'background' , $args = array() ){
@@ -342,7 +308,7 @@ add_action( 'get_footer' , 'layers_apply_inline_styles', 100 );
 * @param int $size Media size to use
 * @param int $video oEmbed code
 *
-* @return   varchar     $media_output Feature Image or Video
+* @return   string     $media_output Feature Image or Video
 */
 if( !function_exists( 'layers_get_feature_media' ) ) {
 	function layers_get_feature_media( $attachmentid = NULL, $size = 'medium' , $video = NULL, $postid = NULL ){
@@ -387,7 +353,7 @@ if( !function_exists( 'layers_get_feature_media' ) ) {
 /**
 * Get Available Image Sizes for specific Image Type
 *
-* @param    varchar     $size 	Image size slug
+* @param    string     $size 	Image size slug
 *
 * @return   array     $sizes 	Array of image dimensions
 */

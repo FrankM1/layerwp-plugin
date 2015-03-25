@@ -1,18 +1,19 @@
-<?php  /**
- * Sliders Widget
+<?php  
+/**
+ * FlexSliders Widget
  *
  * This file is used to register and display the Layers - Slider widget.
  *
  * @package Layers
  * @since Layers 1.0.0
  */
-if( !class_exists( 'Layers_Slider_Widget' ) ) {
-	class Layers_Slider_Widget extends Layers_Widget {
+if( !class_exists( 'Layers_FlexSlider_Widget' ) ) {
+	class Layers_FlexSlider_Widget extends Layers_Widget {
 
 		/**
 		*  Widget construction
 		*/
-	 	function Layers_Slider_Widget(){
+	 	function Layers_FlexSlider_Widget(){
 
 			/**
 			* Widget variables
@@ -23,8 +24,8 @@ if( !class_exists( 'Layers_Slider_Widget' ) ) {
 			* @param  	string    		$taxonomy    			(optional) Taxonomy slug for use as an ID/classname
 			* @param  	array 			$checkboxes    			(optional) Array of checkbox names to be saved in this widget. Don't forget these please!
 			*/
-			$this->widget_title = __( 'Slider' , 'layerswp' );
-			$this->widget_id = 'slide';
+			$this->widget_title = __( 'FlexSlider' , 'layerswp' );
+			$this->widget_id = 'flexslide';
 			$this->post_type = '';
 			$this->taxonomy = '';
 			$this->checkboxes = array(
@@ -89,7 +90,7 @@ if( !class_exists( 'Layers_Slider_Widget' ) ) {
 			// Slider JS enqueue
 			wp_enqueue_script(
 				LAYERS_THEME_SLUG . '-slider-js' ,
-				LAYERS_TEMPLATE_URI . 'assets/frontend/js/swiper.js',
+				LAYERS_TEMPLATE_URI . 'assets/frontend/js/flexslider.js',
 				array( 'jquery' ),
 				LAYERS_VERSION
 			); // Slider
@@ -97,7 +98,7 @@ if( !class_exists( 'Layers_Slider_Widget' ) ) {
 			// Slider CSS enqueue
 			wp_enqueue_style(
 				LAYERS_THEME_SLUG . '-slider',
-				LAYERS_TEMPLATE_URI . 'assets/frontend/css/swiper.css',
+				LAYERS_TEMPLATE_URI . 'assets/frontend/css/flexslider.css',
 				array(),
 				LAYERS_VERSION
 			); // Slider
@@ -141,145 +142,101 @@ if( !class_exists( 'Layers_Slider_Widget' ) ) {
 				$slider_class[] = 'single-slide';
 			}
 			$slider_class = implode( ' ', $slider_class ); ?>
-			<section class="widget row slide swiper-container <?php echo $slider_class; ?> <?php echo $this->get_widget_layout_class( $widget ); ?> <?php echo $this->check_and_return( $widget , 'design', 'advanced', 'customclass' ) ?> <?php echo $this->get_widget_spacing_class( $widget ); ?>" id="<?php echo $widget_id; ?>" <?php if( $this->check_and_return( $widget , 'slide_height' ) ) echo 'style="height: ' . $widget['slide_height'] . 'px;"' ?>>
+			<section class="widget row slide flexslider-container <?php echo $slider_class; ?> <?php echo $this->get_widget_layout_class( $widget ); ?> <?php echo $this->check_and_return( $widget , 'design', 'advanced', 'customclass' ) ?> <?php echo $this->get_widget_spacing_class( $widget ); ?>" id="<?php echo $widget_id; ?>" <?php if( $this->check_and_return( $widget , 'slide_height' ) ) echo 'style="height: ' . $widget['slide_height'] . 'px;"' ?>>
 				<?php if( !empty( $widget[ 'slides' ] ) ) { ?>
-					<?php if( 1 < count( $widget[ 'slides' ] ) && isset( $widget['show_slider_arrows'] ) ) { ?>
-						 <div class="arrows">
-							<a href="" class="l-left-arrow animate"></a>
-							<a href="" class="l-right-arrow animate"></a>
-						</div>
-					<?php } ?>
-					<div class="<?php echo $this->get_field_id( 'pages' ); ?> pages animate">
-						<?php for( $i = 0; $i < count( $widget[ 'slides' ] ); $i++ ) { ?>
-							<a href="" class="page animate <?php if( 0 == $i ) echo 'active'; ?>"></a>
-						<?php } ?>
-					</div>
-			 		<div class="swiper-wrapper">
-						<?php foreach ( explode( ',', $widget[ 'slide_ids' ] ) as $slide_key ) {
-
-							// Make sure we've got a column going on here
-							if( !isset( $widget[ 'slides' ][ $slide_key ] ) ) continue;
-
-							// Setup the relevant slide
-							$slide = $widget[ 'slides' ][ $slide_key ];
-
-							// Set the background styling
-							if( !empty( $slide['design'][ 'background' ] ) ) layers_inline_styles( '#' . $widget_id . '-' . $slide_key , 'background', array( 'background' => $slide['design'][ 'background' ] ) );
-							if( !empty( $slide['design']['fonts'][ 'color' ] ) ) layers_inline_styles( '#' . $widget_id . '-' . $slide_key , 'color', array( 'selectors' => array( 'h3.heading', 'h3.heading a', 'div.excerpt' ) , 'color' => $slide['design']['fonts'][ 'color' ] ) );
-							if( !empty( $slide['design']['fonts'][ 'shadow' ] ) ) layers_inline_styles( '#' . $widget_id . '-' . $slide_key , 'text-shadow', array( 'selectors' => array( 'h3.heading', 'h3.heading a',  'div.excerpt' )  , 'text-shadow' => $slide['design']['fonts'][ 'shadow' ] ) );
-
-
-							// Set Featured Media
-							$featureimage = $this->check_and_return( $slide , 'design' , 'featuredimage' );
-							$featurevideo = $this->check_and_return( $slide , 'design' , 'featuredvideo' );
-
-							// Set Image Sizes
-							if( isset( $slide['design'][ 'imageratios' ] ) ){
-
+					<div class="<?php echo $this->get_field_id( 'slider' ); ?> flexslider">
+				 		<ul class="slides">
+							<?php foreach ( explode( ',', $widget[ 'slide_ids' ] ) as $slide_key ) {
+	
+								// Make sure we've got a column going on here
+								if( !isset( $widget[ 'slides' ][ $slide_key ] ) ) continue;
+	
+								// Setup the relevant slide
+								$slide = $widget[ 'slides' ][ $slide_key ];
+	
+								// Set the background styling
+								if( !empty( $slide['design'][ 'background' ] ) ) layers_inline_styles( '#' . $widget_id . '-' . $slide_key , 'background', array( 'background' => $slide['design'][ 'background' ] ) );
+								if( !empty( $slide['design']['fonts'][ 'color' ] ) ) layers_inline_styles( '#' . $widget_id . '-' . $slide_key , 'color', array( 'selectors' => array( 'h3.heading', 'h3.heading a', 'div.excerpt' ) , 'color' => $slide['design']['fonts'][ 'color' ] ) );
+								if( !empty( $slide['design']['fonts'][ 'shadow' ] ) ) layers_inline_styles( '#' . $widget_id . '-' . $slide_key , 'text-shadow', array( 'selectors' => array( 'h3.heading', 'h3.heading a',  'div.excerpt' )  , 'text-shadow' => $slide['design']['fonts'][ 'shadow' ] ) );
+	
+	
+								// Set Featured Media
+								$featureimage = $this->check_and_return( $slide , 'design' , 'featuredimage' );
+								$featurevideo = $this->check_and_return( $slide , 'design' , 'featuredvideo' );
+	
+								// Set Image Sizes
+								if( isset( $slide['design'][ 'imageratios' ] ) ){
+	
 									// Translate Image Ratio into something usable
 									$image_ratio = layers_translate_image_ratios( $slide['design'][ 'imageratios' ] );
 									$use_image_ratio = $image_ratio . '-medium';
-
-							} else {
-								$use_image_ratio = 'large';
-							}
-
-							// Set Slide CSS Classes
-							$slide_class = array();
-							$slide_class[] = 'invert swiper-slide';
-							if( false != $this->check_and_return( $slide , 'image' ) || 'image-left' == $slide['design'][ 'imagealign' ] || 'image-top' == $slide['design'][ 'imagealign' ] ) {
-								$slide_class[] = 'has-image';
-							}
-							if( isset( $slide['design'][ 'imagealign' ] ) && '' != $slide['design'][ 'imagealign' ] ) {
-								$slide_class[] = $slide['design'][ 'imagealign' ];
-							}
-							if( isset( $slide['design']['fonts'][ 'align' ] ) && '' != $slide['design']['fonts'][ 'align' ] ) {
-								$slide_class[] = $slide['design']['fonts'][ 'align' ];
-							}
-							$slide_class = implode( ' ', $slide_class );
-
-							// Set link entire slide or not
-							$slide_wrapper_tag = 'div';
-							$slide_wrapper_href = '';
-							if( $this->check_and_return( $slide, 'link' ) && ! $this->check_and_return( $slide , 'link_text' ) ) {
-								$slide_wrapper_tag = 'a';
-								$slide_wrapper_href = 'href="' . esc_url( $slide['link'] ) . '"';
-							} ?>
-							<<?php echo $slide_wrapper_tag; ?> <?php echo $slide_wrapper_href; ?> id="<?php echo $widget_id; ?>-<?php echo $slide_key; ?>" class="<?php echo $slide_class; ?>" style="float: left;">
-								<div class="overlay <?php if( isset( $slide['design'][ 'background' ][ 'darken' ] ) ) echo 'darken'; ?>"  <?php if( $this->check_and_return( $widget , 'slide_height' ) ) echo 'style="height: ' . $widget['slide_height'] . 'px;"' ?>>
-									<div class="container clearfix">
-										<?php if( '' != $slide['title'] || '' != $slide['excerpt'] || '' != $slide['link'] ) { ?>
-											<div class="copy-container">
-												<div class="section-title <?php echo ( isset( $slide['design']['fonts'][ 'size' ] ) ? $slide['design']['fonts'][ 'size' ] : '' ); ?>">
-													<?php if( $this->check_and_return( $slide , 'title' ) ) { ?>
-														<h3 class="heading"><?php echo $slide['title']; ?></h3>
-													<?php } ?>
-													<?php if( $this->check_and_return( $slide , 'excerpt' ) ) { ?>
-														<div class="excerpt"><?php echo apply_filters( 'the_content', $slide['excerpt'] ); ?></div>
-													<?php } ?>
-													<?php if( 'div' == $slide_wrapper_tag && $this->check_and_return( $slide, 'link' ) && $this->check_and_return( $slide , 'link_text' ) ) { ?>
-														<a href="<?php echo $slide['link']; ?>" class="button btn-<?php echo $this->check_and_return( $slide , 'design' , 'fonts' , 'size' ); ?>"><?php echo $slide['link_text']; ?></a>
-													<?php } ?>
+	
+								} else {
+									$use_image_ratio = 'large';
+								}
+	
+								// Set Slide CSS Classes
+								$slide_class = array();
+								$slide_class[] = 'invert flexslider-slide';
+								if( false != $this->check_and_return( $slide , 'image' ) || 'image-left' == $slide['design'][ 'imagealign' ] || 'image-top' == $slide['design'][ 'imagealign' ] ) {
+									$slide_class[] = 'has-image';
+								}
+								if( isset( $slide['design'][ 'imagealign' ] ) && '' != $slide['design'][ 'imagealign' ] ) {
+									$slide_class[] = $slide['design'][ 'imagealign' ];
+								}
+								if( isset( $slide['design']['fonts'][ 'align' ] ) && '' != $slide['design']['fonts'][ 'align' ] ) {
+									$slide_class[] = $slide['design']['fonts'][ 'align' ];
+								}
+								$slide_class = implode( ' ', $slide_class );
+	
+								// Set link entire slide or not
+								$slide_wrapper_tag = 'li';
+								$slide_wrapper_href = '';
+								if( $this->check_and_return( $slide, 'link' ) && ! $this->check_and_return( $slide , 'link_text' ) ) {
+									$slide_wrapper_tag = 'a';
+									$slide_wrapper_href = 'href="' . esc_url( $slide['link'] ) . '"';
+								} ?>
+								<<?php echo $slide_wrapper_tag; ?> <?php echo $slide_wrapper_href; ?> id="<?php echo $widget_id; ?>-<?php echo $slide_key; ?>" class="<?php echo $slide_class; ?>" style="float: left;">
+									<div class="overlay <?php if( isset( $slide['design'][ 'background' ][ 'darken' ] ) ) echo 'darken'; ?>"  <?php if( $this->check_and_return( $widget , 'slide_height' ) ) echo 'style="height: ' . $widget['slide_height'] . 'px;"' ?>>
+										<div class="container clearfix">
+											<?php if( '' != $slide['title'] || '' != $slide['excerpt'] || '' != $slide['link'] ) { ?>
+												<div class="copy-container">
+													<div class="section-title <?php echo ( isset( $slide['design']['fonts'][ 'size' ] ) ? $slide['design']['fonts'][ 'size' ] : '' ); ?>">
+														<?php if( $this->check_and_return( $slide , 'title' ) ) { ?>
+															<h3 class="heading"><?php echo $slide['title']; ?></h3>
+														<?php } ?>
+														<?php if( $this->check_and_return( $slide , 'excerpt' ) ) { ?>
+															<div class="excerpt"><?php echo apply_filters( 'the_content', $slide['excerpt'] ); ?></div>
+														<?php } ?>
+														<?php if( 'div' == $slide_wrapper_tag && $this->check_and_return( $slide, 'link' ) && $this->check_and_return( $slide , 'link_text' ) ) { ?>
+															<a href="<?php echo $slide['link']; ?>" class="button btn-<?php echo $this->check_and_return( $slide , 'design' , 'fonts' , 'size' ); ?>"><?php echo $slide['link_text']; ?></a>
+														<?php } ?>
+													</div>
 												</div>
-											</div>
-										<?php } // if title || excerpt ?>
-										<?php if( $featureimage || $featurevideo ) { ?>
-											<div class="image-container <?php echo ( 'image-round' ==  $this->check_and_return( $slide, 'design',  'imageratios' ) ? 'image-rounded' : '' ); ?>">
-												<?php echo layers_get_feature_media(
-													$featureimage ,
-													$use_image_ratio ,
-													$featurevideo
-												); ?>
-											</div>
-										<?php } // if $slide image  ?>
-									</div> <!-- .container -->
-								</div> <!-- .overlay -->
-							</<?php echo $slide_wrapper_tag; ?>>
-						<?php } // foreach slides ?>
+											<?php } // if title || excerpt ?>
+											<?php if( $featureimage || $featurevideo ) { ?>
+												<div class="image-container <?php echo ( 'image-round' ==  $this->check_and_return( $slide, 'design',  'imageratios' ) ? 'image-rounded' : '' ); ?>">
+													<?php echo layers_get_feature_media(
+														$featureimage ,
+														$use_image_ratio ,
+														$featurevideo
+													); ?>
+												</div>
+											<?php } // if $slide image  ?>
+										</div> <!-- .container -->
+									</div> <!-- .overlay -->
+								</<?php echo $slide_wrapper_tag; ?>>
+							<?php } // foreach slides ?>
+				 		</ul>
 			 		</div>
 				<?php } // if !empty( $widget->slides ) ?>
 		 	</section>
 		 	<?php if( !empty( $widget[ 'slides' ] ) && 1 < count( $widget[ 'slides' ] ) ) {
-		 		$swiper_js_obj = str_replace( '-' , '_' , $this->get_field_id( 'slider' ) ); ?>
+		 		$flexslider_js_obj = $this->get_field_id( 'slider' ); ?>
 			 	<script>
 					jQuery(function($){
-
-						var <?php echo $swiper_js_obj; ?> = $('#<?php echo $widget_id; ?>').swiper({
-							//Your options here:
-							mode:'horizontal',
-							<?php if( isset( $widget['show_slider_dots'] ) ) { ?>
-								pagination: '.<?php echo $this->get_field_id( 'pages' ); ?>',
-							<?php } ?>
-							paginationClickable: true,
-							watchActiveIndex: true,
-							loop: true
-							<?php if( isset( $widget['autoplay_slides'] ) && isset( $widget['slide_time'] ) && is_numeric( $widget['slide_time'] ) ) {?>, autoplay: <?php echo ($widget['slide_time']*1000); ?><?php }?>
-							<?php if( '' != get_option( $this->get_field_id( 'slider' ) . '_slide_ids' ) && isset( $wp_customize ) && ( strlen( $widget[ 'slide_ids' ] ) > strlen( get_option( $this->get_field_id( 'slider' ) . '_slide_ids' ) ) ) ) { ?>,initialSlide: <?php echo count( explode( ',', $widget['slide_ids']) ) - 1; ?><?php } ?>
-						});
-
-						<?php if( 1 < count( $widget[ 'slides' ] ) ) { ?>
-							// Allow keyboard control
-							<?php echo $swiper_js_obj; ?>.enableKeyboardControl();
-						<?php } // if > 1 slide ?>
-
-						$('#<?php echo $widget_id; ?>').find('.arrows a').on( 'click' , function(e){
-							e.preventDefault();
-
-							// "Hi Mom"
-							$that = $(this);
-
-							if( $that.hasClass( 'swiper-pagination-switch' ) ){ // Anchors
-								<?php echo $swiper_js_obj; ?>.swipeTo( $that.index() );
-							} else if( $that.hasClass( 'l-left-arrow' ) ){ // Previous
-								<?php echo $swiper_js_obj; ?>.swipePrev();
-							} else if( $that.hasClass( 'l-right-arrow' ) ){ // Next
-								<?php echo $swiper_js_obj; ?>.swipeNext();
-							}
-
-							return false;
-						});
-
-						<?php echo $swiper_js_obj; ?>.init();
+					
+						$('.<?php echo $flexslider_js_obj; ?>.flexslider').flexslider();
 
 					})
 			 	</script>
@@ -478,7 +435,7 @@ if( !class_exists( 'Layers_Slider_Widget' ) ) {
 				<li class="layers-accordion-item <?php echo $this->slide_item_count; ?>" data-guid="<?php echo $slide_guid; ?>">
 					<a class="layers-accordion-title">
 						<span>
-							<?php _e( 'Slide' , 'layerswp' ); ?>
+							<?php _e( 'FlexSlide' , 'layerswp' ); ?>
 							<span class="layers-detail">
 								<?php echo ( isset( $title ) ? ': ' . substr( stripslashes( strip_tags( $title ) ), 0 , 50 ) : NULL ); ?>
 								<?php echo ( isset( $title ) && strlen( $title ) > 50 ? '...' : NULL ); ?>
@@ -496,7 +453,7 @@ if( !class_exists( 'Layers_Slider_Widget' ) ) {
 							), // Widget Object
 							$instance, // Widget Values
 							array(
-								'background',
+								//'background',
 								'featuredimage',
 								'imagealign',
 								'fonts',
@@ -566,5 +523,5 @@ if( !class_exists( 'Layers_Slider_Widget' ) ) {
 	} // Class
 
 	// Add our function to the widgets_init hook.
-	 register_widget("Layers_Slider_Widget");
+	 register_widget("Layers_FlexSlider_Widget");
 }

@@ -14,7 +14,6 @@ class Layers_Customizer {
 	/**
 	*  Retrieve static/global instance of the Layers Customizer
 	*/
-
 	public static function get_instance(){
 		if ( ! isset( self::$instance ) ) {
 			self::$instance = new Layers_Customizer();
@@ -25,7 +24,6 @@ class Layers_Customizer {
 	/**
 	*  Constructor
 	*/
-
 	public function __construct() {
 	}
 
@@ -44,7 +42,7 @@ class Layers_Customizer {
 		require_once LAYERS_TEMPLATE_DIR . $customizer_dir . 'config.php';
 		// Include The Default Settings Class
 		require_once LAYERS_TEMPLATE_DIR . $customizer_dir . 'defaults.php';
-
+		
 		if( isset( $wp_customize ) ) {
 			// Include The Panel and Section Registration Class
 			require_once LAYERS_TEMPLATE_DIR . $customizer_dir . 'registration.php';
@@ -87,7 +85,6 @@ class Layers_Customizer {
 	/**
 	*  Enqueue Widget Scripts
 	*/
-
 	public function admin_enqueue_scripts(){
 
 		// Media Uploader required scripts
@@ -117,7 +114,6 @@ class Layers_Customizer {
 	/**
 	*  Enqueue Customizer Preview Scripts
 	*/
-
 	public function customizer_preview_enqueue_scripts(){
 
 		// Customizer Preview general
@@ -134,7 +130,6 @@ class Layers_Customizer {
 	/**
 	*  Enqueue Widget Styles
 	*/
-
 	public function admin_print_styles(){
 
 		// Widget styles

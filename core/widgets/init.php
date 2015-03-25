@@ -43,6 +43,7 @@ class Layers_Widgets {
 		require_once LAYERS_TEMPLATE_DIR . $module_dir . 'content.php';
 		require_once LAYERS_TEMPLATE_DIR . $module_dir . 'post.php';
 		require_once LAYERS_TEMPLATE_DIR . $module_dir . 'slider.php';
+		require_once LAYERS_TEMPLATE_DIR . $module_dir . 'flexslider.php';
 
 		// When switching to a child theme, preserve page builder pages
 		add_action('switch_theme', array( $this , 'preserve_widgets' ) );

@@ -401,41 +401,6 @@ if( ! function_exists( 'layers_scripts' ) ) {
 			true
 		); // Framework
 
-		wp_enqueue_style(
-			LAYERS_THEME_SLUG . '-framework' ,
-			plugin_dir_url( __FILE__ ) . 'assets/frontend/css/framework.css',
-			array() ,
-			LAYERS_VERSION
-		);
-
-		wp_enqueue_style(
-			LAYERS_THEME_SLUG . '-components',
-			plugin_dir_url( __FILE__ ) . 'assets/frontend/css/components.css',
-			array(),
-			LAYERS_VERSION
-		); // Compontents
-
-		wp_enqueue_style(
-			LAYERS_THEME_SLUG . '-responsive',
-			plugin_dir_url( __FILE__ ) . 'assets/frontend/css/responsive.css',
-			array(),
-			LAYERS_VERSION
-		); // Responsive
-
-		wp_enqueue_style(
-			LAYERS_THEME_SLUG . '-icon-fonts',
-			plugin_dir_url( __FILE__ ) . 'assets/frontend/css/layers-icons.css',
-			array(),
-			LAYERS_VERSION
-		); // Icon Font
-
-		wp_enqueue_style(
-			LAYERS_THEME_SLUG . '-style' ,
-			get_stylesheet_uri(),
-			array() ,
-			LAYERS_VERSION
-		);
-
 		if( is_admin_bar_showing() ) {
 			wp_enqueue_style(
 				LAYERS_THEME_SLUG . '-admin',

@@ -51,6 +51,13 @@ class Layers_API {
 				'date' => NULL,
 				'price' => NULL,
 			),
+			'layers-revslider' => array(
+				'title' => __( 'Revolution Slider' , 'layerswp' ),
+				'description' => __( 'Display revolution sliders.' , 'layerswp' ),
+				'available' => false,
+				'date' => NULL,
+				'price' => NULL,
+			),
 
 		);
 

@@ -109,7 +109,7 @@ class Layers_Custom_Meta {
 
 		// Check if we're using the builder for this page
 
-		$is_builder_used = ( 'builder.php' == basename( get_page_template() ) ) ? true : false;
+		$is_builder_used = ( LAYERS_BUILDER_TEMPLATE == basename( get_page_template() ) ) ? true : false;
 
 		printf( '<div id="layers_toggle_builder" class=" %3$s">
 					<div  class="postbox layers-push-top">
@@ -221,7 +221,7 @@ class Layers_Custom_Meta {
 		// Get the Post ID
 		$post_id = $_POST['id'];
 
-		if( isset($_POST[ 'template' ] ) && 'builder.php' == $_POST[ 'template' ] ){
+		if( isset($_POST[ 'template' ] ) && LAYERS_BUILDER_TEMPLATE == $_POST[ 'template' ] ){
 			update_post_meta( $post_id , '_wp_page_template', $_POST[ 'template' ] );
 		} else {
 			delete_post_meta( $post_id , '_wp_page_template' );
