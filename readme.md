@@ -1,3 +1,5 @@
+# This was an expiriment and is no longer maintained. Use layer as a theme [LayersWP](http://www.layerswp.com/download/layers/)
+
 ## Synopsis
 
 Layers is a WordPress Theme framework focused on extending the WordPress core functionality to include layout building through the WordPress Visual Customizer. A lightweight set of base options, widgets and theme templates provide a user-friendly, extensible tool for creating beautiful, WordPress-faithful websites.
