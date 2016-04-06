@@ -1,4 +1,4 @@
-# This was an expiriment and is no longer maintained. Use layer as a theme [LayersWP](http://www.layerswp.com/download/layers/)
+# This was an experiment and is no longer maintained. Use layer as a theme [LayersWP](http://www.layerswp.com/download/layers/)
 
 ## Synopsis
 
